@@ -9,7 +9,12 @@ const blogRoutes = require('./Routes/blog.js');
 const authRoutes = require('./Routes/auth.js')
 const app = express();
 //database
-mongoose.connect(process.env.DATABASE_CLOUD,{useNewUrlParser:true, useCreateIndex: true,useFindAndModify:false}).then(()=>console.log('DB connected'));
+mongoose
+.connect(process.env.DATABASE_CLOUD,{useNewUrlParser:true, useCreateIndex: true,useFindAndModify:false})
+.then(()=>console.log('DB connected'))
+.catch(err=>{
+    console.log(err);
+})
 
 
 app.use(morgan('dev'));
