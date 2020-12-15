@@ -6,7 +6,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const blogRoutes = require('./Routes/blog.js');
-
+const authRoutes = require('./Routes/auth.js')
 const app = express();
 //database
 mongoose.connect(process.env.DATABASE_CLOUD,{useNewUrlParser:true, useCreateIndex: true,useFindAndModify:false}).then(()=>console.log('DB connected'));
@@ -16,6 +16,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.json())
 app.use(cookieParser())
 app.use('/api',blogRoutes);
+app.use('/api', authRoutes);
 
 //cors
 if(process.env.NODE_ENV === 'development'){
