@@ -8,8 +8,8 @@ exports.userSignupValidator =[
     check('email')
         .isEmail()
         .withMessage('must be a valid email address'),
-    check('name')
-        .isLength({min:6})
+    check('password')
+        .isLength({ min:6 })
         .withMessage('Password must be at least 6 characters long'),
 
 ];
