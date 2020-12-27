@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const blogRoutes = require('./Routes/blog.js');
 const authRoutes = require('./Routes/auth.js')
+const userRouters = require('./Routes/user.js');
 const app = express();
 //database
 mongoose
@@ -29,6 +30,8 @@ app.use(cors({ origin:`${process.env.CLIENT_URL}`}));
 //port 
 app.use('/api',blogRoutes);
 app.use('/api', authRoutes);
+app.use('/api', userRouters);
+
 const port = process.env.PORT || 8000;
 
 app.listen(port, ()=> console.log(`server is running on port ${port}`));
